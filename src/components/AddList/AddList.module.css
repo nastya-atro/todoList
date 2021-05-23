@@ -1,0 +1,14 @@
+.add_list_popup{
+    background-color: rgba(255, 255, 0, 0.295);
+    width: 400px;
+    padding: 20px;
+    border: 1px solid black;
+    margin-left: 40px
+}
+.active{
+    border: 1px solid black
+}
+
+.add_list_popup_close{
+    float: right
+}

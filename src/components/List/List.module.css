@@ -1,0 +1,12 @@
+.todo__list_remove{
+    width: 15px;
+    height:15px;
+    float: right;
+    opacity: 0.1;
+}
+
+.todo__list_remove:hover{
+    width: 15px;
+    height:15px;
+    opacity: 1;
+}
