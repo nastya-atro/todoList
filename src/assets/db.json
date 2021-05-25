@@ -1,13 +1,18 @@
 {
   "lists": [
     {
+      "id": 1,
+      "name": "ПродажиBBB",
+      "colorId": 5
+    },
+    {
       "id": 2,
-      "name": "фронтенд",
+      "name": "Фронтенд",
       "colorId": 4
     },
     {
       "id": 3,
-      "name": "Фильмы + сериалы",
+      "name": "Фильмы и сериалы",
       "colorId": 3
     },
     {
@@ -16,42 +21,33 @@
       "colorId": 2
     },
     {
-      "name": "УрокиJs",
-      "colorId": 5,
+      "id": 5,
+      "name": "Личное",
+      "colorId": 1
+    },
+    {
+      "name": "Спорт",
+      "colorId": 3,
       "id": 6
     },
     {
-      "name": "uu",
-      "colorId": 4,
+      "name": "Курс по ReactJS ToDo",
+      "colorId": 7,
       "id": 7
-    },
-    {
-      "name": "uuu",
-      "colorId": 8,
-      "id": 8
-    },
-    {
-      "nameList": "uuu",
-      "colorId": 4,
-      "id": 9
-    },
-    {
-      "nameList": "ooo",
-      "colorId": 5,
-      "id": 10
-    },
-    {
-      "nameList": "pppp",
-      "colorId": 3,
-      "id": 11
     }
   ],
   "tasks": [
     {
+      "id": 1,
+      "listId": 2,
+      "text": "Изучить JavaScriptttttt",
+      "completed": true
+    },
+    {
       "id": 2,
       "listId": 2,
-      "text": "Изучить паттерны проектирования",
-      "completed": true
+      "text": "Изучить паттерны проектированияzz",
+      "completed": false
     },
     {
       "id": 3,
@@ -62,13 +58,13 @@
     {
       "id": 4,
       "listId": 2,
-      "text": "Redux (redux-observable, redux-saga)",
-      "completed": true
+      "text": "Redux (redux-observable, redux-saga)nn",
+      "completed": false
     },
     {
       "listId": 2,
-      "text": "123",
-      "completed": false,
+      "text": "123456",
+      "completed": true,
       "id": 5
     },
     {
@@ -84,76 +80,34 @@
       "id": 12
     },
     {
-      "listId": 2,
-      "text": "jjj",
-      "completed": false,
-      "id": 13
+      "listId": 7,
+      "text": "Сделали сайдбарnn",
+      "completed": true,
+      "id": 15
     },
     {
-      "listId": 2,
-      "text": "nnn",
-      "completed": false,
-      "id": 14
-    },
-    {
-      "listId": 4,
-      "text": "Мастер и Маргарита",
-      "completed": false,
+      "listId": 7,
+      "text": "yyyy",
+      "completed": true,
       "id": 16
     },
     {
-      "listId": 4,
-      "text": "Гарри Поттер",
+      "listId": 7,
+      "text": "nnn",
       "completed": false,
       "id": 17
     },
     {
-      "listId": 3,
-      "text": "Игра престолов",
-      "completed": true,
-      "id": 19
-    },
-    {
-      "listId": 3,
-      "text": "Врем приключений",
+      "listId": 7,
+      "text": "jjjjj",
       "completed": false,
-      "id": 20
-    },
-    {
-      "listId": 4,
-      "text": "uuu",
-      "completed": false,
-      "id": 23
+      "id": 18
     },
     {
       "listId": 6,
-      "text": "css",
+      "text": "nnn",
       "completed": true,
-      "id": 26
-    },
-    {
-      "listId": 8,
-      "text": "iii",
-      "completed": true,
-      "id": 27
-    },
-    {
-      "listId": 2,
-      "text": "jjj",
-      "completed": false,
-      "id": 28
-    },
-    {
-      "listId": 8,
-      "text": "ppp",
-      "completed": false,
-      "id": 29
-    },
-    {
-      "listId": 11,
-      "text": "iiiinnnn",
-      "completed": true,
-      "id": 30
+      "id": 19
     }
   ],
   "colors": [

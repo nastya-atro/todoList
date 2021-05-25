@@ -2,20 +2,19 @@ import React from 'react';
 import cn from 'classnames'
 import Badge from '../Badge/Badge';
 import s from './List.module.css'
-import { todoListApi } from '../../api.axios/api';
+import { useDispatch } from 'react-redux';
+import { removeListThunk } from '../../redux-store/listsRuducer';
 
 
-
-const List = ({ items, isRemovable, onClick, removeList, onClickItem, activeItem}) => {
+const List = ({ items, isRemovable, onClick, onClickItem, activeItem}) => {
+    
+    const dispatch = useDispatch()
 
     const onRemove=(item)=>{
-        todoListApi.deleteList(item.id)
-        .then(()=>{
-            removeList(item.id)
-        })
+        dispatch(removeListThunk(item.id))
     }
-    return (
 
+    return (
         <ul onClick={onClick} className='todo__list'>
             {items.map((item, index) =>
                 <li onClick={onClickItem ?()=>{onClickItem(item)}:null}
@@ -26,7 +25,6 @@ const List = ({ items, isRemovable, onClick, removeList, onClickItem, activeItem
                     }</span>
                     <span>{item.name}{item.tasks && `(${item.tasks.length})`}</span>
                     {isRemovable? <span onClick={()=>onRemove(item)} className={s.todo__list_remove}><i className="fas fa-times"></i></span> :null}
-                    
                 </li>)}
         </ul>
 

@@ -2,47 +2,39 @@ import React, { useState, useEffect } from 'react';
 import Badge from '../Badge/Badge';
 import List from '../List/List';
 import s from './AddList.module.css'
-import { todoListApi } from '../../api.axios/api';
+import { addNewListThunk } from '../../redux-store/listsRuducer';
+import { useDispatch, useSelector } from 'react-redux';
 
-const AddList = ({ colors, onAddList }) => {
-    let [isPopup, setPopup] = useState(false)
-    let [activeColor, setActiveColor] = useState(3)
-    let [inputValue, setInputValue] = useState('')
-    let [isFetching, toogleIsFetching] = useState(false)
+const AddList = ({ colors }) => {
+    const [isPopup, setPopup] = useState(false)
+    const [activeColor, setActiveColor] = useState(3)
+    const [inputValue, setInputValue] = useState('')
+
+    const isFetching = useSelector((state)=>state.lists.isFetching)
+
+    const dispatch=useDispatch()
 
     let visiblePopup = () => {
         setPopup(!isPopup)
     }
-    let onClose = () => {
+    const onClose = () => {
         setPopup(false)
         setInputValue('')
         setActiveColor(colors[0].id)
     }
-
     useEffect(() => {
         if (Array.isArray(colors)) {
             setActiveColor(colors[0].id);
         }
     }, [colors])
 
-
     const addNewList = () => {
         if (!inputValue) {
             alert('Введите название списка')
             return
         }
-        toogleIsFetching(true)
-
-        todoListApi.addNewList(inputValue, activeColor)
-            .then(({ data }) => {
-                const color = colors.filter(color => color.id === activeColor)[0]
-                const newObj = { ...data, color, tasks: [] }
-                onAddList(newObj)
-                onClose()
-            }).finally(() => {
-                toogleIsFetching(false)
-            })
-
+        const color = colors.filter(color => color.id === activeColor)[0]
+        dispatch(addNewListThunk(inputValue, activeColor, color))       
     }
 
 

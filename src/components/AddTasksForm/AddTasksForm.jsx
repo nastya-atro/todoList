@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
-import { todoListApi } from '../../api.axios/api';
 import s from './AddTasksForm.module.css'
+import { useSelector, useDispatch } from 'react-redux';
+import { addNewTaskThunk } from '../../redux-store/listsRuducer';
 
-const AddTasksForm = ({ addNewTask, list }) => {
+const AddTasksForm = ({ list }) => {
     const [visibleForm, setVisibleForm] = useState(true)
     const [inputValue, setInputValue] = useState('')
-    const [isFetching, toogleIsFetching] = useState(false)
+    // const [isFetching, toogleIsFetching] = useState(false)
+
+    const isFetching = useSelector((state) => state.lists.isFetching)
+    const dispatch = useDispatch()
 
     const toogleVisibleForm = () => {
-        setVisibleForm(!visibleForm)
-        setInputValue('')
+        if (!isFetching) {
+            setVisibleForm(!visibleForm)
+            setInputValue('')
+        }
     }
 
     const addNewTaskItem = () => {
@@ -18,22 +24,9 @@ const AddTasksForm = ({ addNewTask, list }) => {
             "text": inputValue,
             "completed": false
         }
-        toogleIsFetching(true)
-
-        todoListApi.addNewTask(newTask)
-            .then(({ data }) => {
-                addNewTask(list.id, data)
-                toogleVisibleForm()
-            })
-            .catch(() => { alert('Error: task not added. Please, try again') })
-            .finally(() => {
-                toogleIsFetching(false)
-            })
-
-
+        dispatch(addNewTaskThunk(newTask, list.id))
+        toogleVisibleForm()
     }
-
-
 
     return (
         <div className={s.tasks_form}>
@@ -49,12 +42,7 @@ const AddTasksForm = ({ addNewTask, list }) => {
                     </div>
                 </div>
             }
-
-
         </div>
-
-
-
     )
 }
 
