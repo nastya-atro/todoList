@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import { todoListApi } from '../../api.axios/api';
 import s from './AddTasksForm.module.css'
 
 const AddTasksForm = ({ addNewTask, list }) => {
@@ -20,7 +20,7 @@ const AddTasksForm = ({ addNewTask, list }) => {
         }
         toogleIsFetching(true)
 
-        axios.post('http://localhost:3001/tasks', newTask)
+        todoListApi.addNewTask(newTask)
             .then(({ data }) => {
                 addNewTask(list.id, data)
                 toogleVisibleForm()

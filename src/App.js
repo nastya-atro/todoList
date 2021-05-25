@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'
 import './App.css';
 import AddList from './components/AddList/AddButtonList';
 import List from './components/List/List';
 import Tasks from './components/Tasks/Tasks';
 import { Route, useHistory, useLocation } from 'react-router-dom';
+import { todoListApi } from './api.axios/api';
 
 
 function App() {
@@ -14,27 +14,22 @@ function App() {
   const [activeItem, setActiveItem] = useState(null)
 
   const history = useHistory();
-  const location=useLocation()
+  const location = useLocation()
 
   useEffect(() => {
-    axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks')
-      .then(res => setLists(res.data));
-    axios.get('http://localhost:3001/colors')
-      .then(res => setColors(res.data));
-
+    todoListApi.getLists().then(res => setLists(res.data));
+    todoListApi.getColors().then(res => setColors(res.data));
   }, [])
-  
-  useEffect(()=>{
-    const listId=location.pathname.split('lists/')[1]
-    if(lists){
-      const list = lists.find(list=>list.id ===Number(listId))
+
+  useEffect(() => {
+    const listId = location.pathname.split('lists/')[1]
+
+    if (lists) {
+      const list = lists.find(list => list.id === Number(listId))
       setActiveItem(list)
     }
 
-
-    
-
-  },[lists, location.pathname])
+  }, [lists, location.pathname])
 
 
 
@@ -43,11 +38,25 @@ function App() {
       ...lists, newList
     ]
     setLists(addedList)
+
   }
 
   const removeList = (itemId) => {
     const nedListAfterDelete = lists.filter(lists => lists.id !== itemId)
     setLists(nedListAfterDelete)
+  }
+
+  const onRemoveTask = (listId, taskId) => {
+    const newListTasks = lists.map(item => {
+      if (item.id === listId) {
+        item.tasks = item.tasks.filter(task => task.id !== taskId)
+      }
+      return item
+    })
+    setLists(newListTasks)
+
+    todoListApi.deleteTask(taskId)
+    .catch(() => { alert('Не удалось удалить задачу') })
   }
 
   const changeTitleItem = (id, title) => {
@@ -60,6 +69,48 @@ function App() {
     })
     setLists(newList)
   }
+
+  const changeTaskText = (listId, taskObj) => {
+    const newTaskText = window.prompt('Rewrite your task', taskObj.text)
+    if (!newTaskText) { return }
+
+    const newList = lists.map((list) => {
+      if (list.id === listId) {
+        list.tasks = list.tasks.map((task) => {
+          if (task.id === taskObj.id) {
+            task.text = newTaskText
+          }
+          return task
+        })
+      }
+      return list
+    })
+    setLists(newList)
+
+    todoListApi.changeTaskText(taskObj.id, newTaskText)
+            .catch(() => { alert('Не удалось обновить название списка') })
+  }
+
+ 
+
+  const onCompleteTask=(listId, taskId, completed)=>{
+    const newList = lists.map((list) => {
+      if (list.id === listId) {
+        list.tasks = list.tasks.map((task) => {
+          if (task.id === taskId) {
+            task.completed = completed
+          }
+          return task
+        })
+      }
+      return list
+    })
+    setLists(newList)
+
+    todoListApi.changeSelectTask(taskId, completed)
+            .catch(() => { alert('Не удалось обновить выполнение списка') })
+  }
+  
 
   const addNewTask = (listId, taskObj) => {
     const newListTask = lists.map(item => {
@@ -79,16 +130,16 @@ function App() {
 
       <div className='todo_sidebar'>
         <List
-        onClickItem={(list) =>setActiveItem(history.push(`/`))} 
-         items={[
-          { icon: <i className="fas fa-align-justify"></i>, name: 'Все задачи' }]} />
-        {lists ? 
-        <List onClickItem={(list) =>history.push(`/lists/${list.id}`)} 
-        activeItem={activeItem} 
-        removeList={removeList} 
-        isRemovable 
-        items={lists} /> : ('Загрузка...')}
-        
+          onClickItem={(list) => setActiveItem(history.push(`/`))}
+          items={[
+            { icon: <i className="fas fa-align-justify"></i>, name: 'Все задачи' }]} />
+        {lists ?
+          <List onClickItem={(list) => history.push(`/lists/${list.id}`)}
+            activeItem={activeItem}
+            removeList={removeList}
+            isRemovable
+            items={lists} /> : ('Загрузка...')}
+
         <AddList onAddList={onAddList} colors={colors} />
       </div>
 
@@ -103,7 +154,7 @@ function App() {
 
         <Route path='/lists/:id'>
           {lists && activeItem &&
-            <Tasks addNewTask={addNewTask}
+            <Tasks onCompleteTask={onCompleteTask} changeTaskText={changeTaskText} onRemoveTask={onRemoveTask} addNewTask={addNewTask}
               changeTitle={changeTitleItem}
               list={activeItem} />}
         </Route>

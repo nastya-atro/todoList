@@ -2,19 +2,17 @@ import React from 'react';
 import cn from 'classnames'
 import Badge from '../Badge/Badge';
 import s from './List.module.css'
-import axios from 'axios'
+import { todoListApi } from '../../api.axios/api';
 
 
 
 const List = ({ items, isRemovable, onClick, removeList, onClickItem, activeItem}) => {
 
     const onRemove=(item)=>{
-        axios.delete('http://localhost:3001/lists/'+ item.id)
+        todoListApi.deleteList(item.id)
         .then(()=>{
             removeList(item.id)
         })
-        
-
     }
     return (
 

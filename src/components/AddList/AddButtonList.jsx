@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
 import Badge from '../Badge/Badge';
 import List from '../List/List';
 import s from './AddList.module.css'
+import { todoListApi } from '../../api.axios/api';
 
 const AddList = ({ colors, onAddList }) => {
     let [isPopup, setPopup] = useState(false)
@@ -10,41 +10,39 @@ const AddList = ({ colors, onAddList }) => {
     let [inputValue, setInputValue] = useState('')
     let [isFetching, toogleIsFetching] = useState(false)
 
-
     let visiblePopup = () => {
         setPopup(!isPopup)
     }
-
     let onClose = () => {
         setPopup(false)
         setInputValue('')
         setActiveColor(colors[0].id)
     }
 
-    
-    useEffect(() => { 
-        if(Array.isArray(colors)){
+    useEffect(() => {
+        if (Array.isArray(colors)) {
             setActiveColor(colors[0].id);
-        } 
+        }
     }, [colors])
 
 
     const addNewList = () => {
-        if (!inputValue) { 
-            alert('Введите название списка') 
+        if (!inputValue) {
+            alert('Введите название списка')
             return
         }
         toogleIsFetching(true)
-        axios.post('http://localhost:3001/lists', { name: inputValue, colorId: activeColor })
+
+        todoListApi.addNewList(inputValue, activeColor)
             .then(({ data }) => {
                 const color = colors.filter(color => color.id === activeColor)[0]
-                const newObj = { ...data, color }
+                const newObj = { ...data, color, tasks: [] }
                 onAddList(newObj)
                 onClose()
-            }).finally(()=>{
+            }).finally(() => {
                 toogleIsFetching(false)
             })
-        
+
     }
 
 
@@ -64,18 +62,16 @@ const AddList = ({ colors, onAddList }) => {
                     <div className={s.add_list_popup_colors}>
 
                         {colors.map(color => (
-                        <Badge
-                            className={activeColor === color.id && s.active}
-                            onClick={() => setActiveColor(color.id)}
-                            key={color.id}
-                            colors={color.name} />))}
+                            <Badge
+                                className={activeColor === color.id && s.active}
+                                onClick={() => setActiveColor(color.id)}
+                                key={color.id}
+                                colors={color.name} />))}
                     </div>
                 </div>
                 <div>
                     <button onClick={addNewList}>
-                        {isFetching ?'Загрузка...' :'Добавить список'}</button></div>
-
-
+                        {isFetching ? 'Загрузка...' : 'Добавить список'}</button></div>
             </div> : null}
         </div>
 
