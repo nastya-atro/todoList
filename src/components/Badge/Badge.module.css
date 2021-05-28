@@ -1,11 +1,12 @@
 .badge{
     display: inline-block;
-    width: 15px;
-    height: 15px;
+    width: 30px;
+    height: 30px;
     border-radius: 30px;
     margin-left: 5px;
 }
 
 .active{
-    border: 1px solid black
+    border: 5px solid rgba(255, 255, 255, 0)
+    
 }

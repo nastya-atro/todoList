@@ -19,7 +19,7 @@ body {
 }
 
 .todo_main{
-  background-color: wheat
+  background-color: rgb(245, 179, 179)
 }
 
 .todo__list li{
@@ -39,6 +39,3 @@ li.active{
   background-color: aqua;
 }
 
-li.noactive{
-  background-color: white
-}

@@ -1,7 +1,24 @@
-.todo_main_tasks_text{
-    max-width: 400px
+.tasks_header_text{
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bolder;
+    
+}
+.tasks_header_tpaper{
+    border-bottom:3px solid rgba(0, 0, 0, 0.219)
+    
+}
+
+.todo_main_tasks_title:hover{
+    filter: opacity(0.5);
+
 }
 
 .todo_main_icon_changes{
-    margin-left: 100px;
+    margin-left: 200px;
+}
+
+.todo_main_input_block{
+    float: right
 }
