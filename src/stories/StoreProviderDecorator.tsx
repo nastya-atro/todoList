@@ -20,7 +20,7 @@ const initialGlobalState = {
                 { listId: 1, text: "Titanic", completed: true, id: 2 },
                 { listId: 1, text: "Adventure Time", completed: true, id: 3 },
                 { listId: 1, text: "Friends", completed: false, id: 4 }],
-            colors: [
+            color: [
                 { id: 1, hex: "#C9D1D3", name: "grey" }]
         },
 
@@ -29,7 +29,7 @@ const initialGlobalState = {
             id: 2,
             tasks: [{ listId: 2, text: "A Smarter Way to Learn JavaScript.", completed: false, id: 5 },
             { listId: 2, text: "Eloquent JavaScript: A Modern Introduction to Programming.", completed: true, id: 6 }],
-            colors: [{ id: 1, hex: "#C9D1D3", name: "grey" }]
+            color: [{ id: 1, hex: "#C9D1D3", name: "grey" }]
         }
     ]
 }

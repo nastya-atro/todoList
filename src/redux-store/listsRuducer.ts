@@ -149,7 +149,7 @@ export const actions = {
     setColorsAction: (colors: Array<ColorsType>) => ({
         type: 'SET_COLORS', colors
     } as const),
-
+ 
     setActiveItemAction: (activeItem: any) => ({
         type: 'SET_ACTIVE_ITEM', activeItem
     } as const),

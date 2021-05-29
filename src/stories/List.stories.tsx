@@ -21,7 +21,7 @@ export const ListBaseExample = () => {
                     listId: 1,
                     text: 'jj',
                     completed: false
-                }], color: [{ id: 1, hex: '#0000', name: 'white' }]
+                }], color: [{ id: 1, hex: '#0000', name: 'white' }] 
             }}
             isRemovable={false}
             items={[{

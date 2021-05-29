@@ -3,11 +3,12 @@ import './App.css';
 import AddList from './components/AddList/AddButtonList';
 import List from './components/List/List';
 import Tasks from './components/Tasks/Tasks';
-import { Route, useHistory, useLocation} from 'react-router-dom';
-import { useDispatch, useSelector} from 'react-redux';
-import { setColors, setLists, actions, ListsType } from './redux-store/listsRuducer';
+import { Route, useHistory, useLocation, BrowserRouter, withRouter } from 'react-router-dom';
+import { Provider, useDispatch, useSelector} from 'react-redux';
+import { setColors, setLists, actions} from './redux-store/listsRuducer';
 import { colorsSelector, listsSelector, activeItemSelector } from './redux-store/listsSelector';
 import { AppBar, Box, Container, Grid, makeStyles, Typography } from '@material-ui/core';
+import store from './redux-store/redux-store';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -85,4 +86,20 @@ const App: React.FC = () => {
   );
 }
 
-export default App
+let AppC = withRouter(App)
+
+const AppContainer = () => {
+  return (
+    <AppC />
+  )
+}
+
+let MainApp: React.FC = () => {
+  return <BrowserRouter>
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
+    </BrowserRouter>
+}
+
+export default MainApp
