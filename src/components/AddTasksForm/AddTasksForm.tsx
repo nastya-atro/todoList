@@ -3,15 +3,37 @@ import s from './AddTasksForm.module.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { addNewTaskThunk, ListsType } from '../../redux-store/listsRuducer';
 import { isFetchingSelector } from '../../redux-store/listsSelector';
-import { Paper, IconButton } from '@material-ui/core';
+import { Paper, IconButton, makeStyles, createStyles, Button, Grid } from '@material-ui/core';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import TextField from '@material-ui/core/TextField';
+import { Theme } from '@material-ui/core/styles';
 
-type PropsType={
+type PropsType = {
     list: ListsType
-
 }
 
-const AddTasksForm:React.FC<PropsType> = ({ list }) => {
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        input_button: {
+            marginTop: 10,
+            backgroundColor: '#f1f0f067;'
+        },
+        input_buttons: {
+            marginLeft: 10
+        },
+
+        input: {
+            '& > *': {
+                margin: theme.spacing(1),
+                width: '95%'
+            },
+        },
+    }),
+);
+
+
+const AddTasksForm: React.FC<PropsType> = ({ list }) => {
+    const classes = useStyles();
     const [visibleForm, setVisibleForm] = useState(true)
     const [inputValue, setInputValue] = useState('')
 
@@ -37,18 +59,34 @@ const AddTasksForm:React.FC<PropsType> = ({ list }) => {
 
     return (
         <Paper elevation={0} className={s.tasks_form}>
-            {visibleForm ? 
-            <div onClick={toogleVisibleForm}>
-                <IconButton className={s.icon_close}>
+            {visibleForm ?
+                <div onClick={toogleVisibleForm}>
+                    <IconButton className={s.icon_close}>
                         <AddCircleIcon />
                     </IconButton>
-                <span>Добавить новую задачу</span>
-            </div> :
+                    <span>Add new task</span>
+                </div> :
                 <div>
-                    <input value={inputValue} onChange={(e) => { setInputValue(e.currentTarget.value) }} type='text' placeholder='New task...'></input>
-                    <div>
-                        <button onClick={addNewTaskItem}>{!isFetching ? 'Добавить задачу' : 'Добавление...'}</button>
-                        <button onClick={toogleVisibleForm}>Отмена</button>
+                    <form className={classes.input} noValidate autoComplete="off">
+                        <TextField
+                            id="outlined-basic"
+                            label="New task text..."
+                            variant="outlined"
+                            onChange={(e: any) => { setInputValue(e.currentTarget.value) }}
+                            value={inputValue}
+                            type='text' />
+                    </form>
+
+                    <div className={classes.input_buttons}>
+
+                        <Button onClick={addNewTaskItem} variant="contained" color="default" >
+                            {!isFetching ? 'Add task' : 'Adding...'}
+                        </Button>
+                        <div>
+                            <Button className={classes.input_button} onClick={toogleVisibleForm} variant="contained" color="default" >
+                                Cancel
+                    </Button>
+                        </div>
                     </div>
                 </div>
             }

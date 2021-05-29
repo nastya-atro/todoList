@@ -3,11 +3,10 @@ import s from './Tasks.module.css'
 import AddTasksForm from './../AddTasksForm/AddTasksForm';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { removeTaskThunk, changeTitleItemThunk, changeTaskTextThunk, changeSelectTaskThunk, ListsType } from '../../redux-store/listsRuducer';
+import { removeTaskThunk, changeTitleItemThunk, changeTaskTextThunk, changeSelectTaskThunk } from '../../redux-store/listsRuducer';
 import { Typography, makeStyles, Paper, FormControlLabel, Checkbox, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import EditIcon from '@material-ui/icons/Edit';
-import { DriveEta } from '@material-ui/icons';
 
 type PropsType = {
     list: any
@@ -57,9 +56,7 @@ const Tasks: React.FC<PropsType> = (props) => {
                     <Typography variant='h6' onClick={changeTitleItem} className={s.todo_main_tasks_title} style={{ color: props.list.color.hex }}>
                         {props.list.name} </Typography>
                 </Paper>
-                
             </Link>
-
             <div>
                 <div>
                     {props.list.tasks && props.list.tasks.map((list: any) =>
@@ -81,19 +78,17 @@ const Tasks: React.FC<PropsType> = (props) => {
                                                 </IconButton>
                                             </Fragment>
                                         }
-
                                     </span>
                                     : <input type='text' onBlur={() => { changeTasks(true) }} />}
                             </Fragment>
                         </Paper>)}
                 </div>
                 <Paper elevation={0} className={classes.todo_main_tasks_block}>
-                    {props.list.tasks && props.list.tasks.length === 0 && <Typography variant='h6'>Текущих задач нет</Typography>}
+                    {props.list.tasks && props.list.tasks.length === 0 && <Typography variant='h6'>There are no current issues</Typography>}
                 </Paper>
             </div>
             <div>{!props.withoutInput && <AddTasksForm key={props.list.id} list={props.list} />}</div>
         </div>
-
     )
 }
 

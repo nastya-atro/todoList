@@ -1,69 +1,87 @@
 {
   "lists": [
     {
-      "id": 2,
-      "name": "Фронтенд",
-      "colorId": 4
+      "name": "Films",
+      "colorId": 4,
+      "id": 1
     },
     {
-      "id": 3,
-      "name": "Фильмы и сериалы",
-      "colorId": 3
+      "name": "Books",
+      "colorId": 5,
+      "id": 2
     },
     {
-      "name": "Учеба",
-      "colorId": 8,
-      "id": 4
+      "name": "Podcasts",
+      "colorId": 6,
+      "id": 3
     }
   ],
   "tasks": [
     {
-      "id": 1,
-      "listId": 2,
-      "text": "Изучить JavaScriptttttt",
-      "completed": true
-    },
-    {
-      "id": 2,
-      "listId": 2,
-      "text": "Изучить паттерны проектированияzz",
-      "completed": true
-    },
-    {
-      "id": 3,
-      "listId": 2,
-      "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-      "completed": true
-    },
-    {
-      "id": 4,
-      "listId": 2,
-      "text": "Redux (redux-observable, redux-saga)nn",
-      "completed": false
-    },
-    {
-      "listId": 2,
-      "text": "123456",
+      "listId": 1,
+      "text": "Ameli",
       "completed": true,
+      "id": 1
+    },
+    {
+      "listId": 1,
+      "text": "Titanic",
+      "completed": true,
+      "id": 2
+    },
+    {
+      "listId": 1,
+      "text": "Adventure Time",
+      "completed": true,
+      "id": 3
+    },
+    {
+      "listId": 1,
+      "text": "Friends",
+      "completed": false,
+      "id": 4
+    },
+    {
+      "listId": 2,
+      "text": "A Smarter Way to Learn JavaScript.",
+      "completed": false,
       "id": 5
     },
     {
       "listId": 2,
-      "text": "222",
+      "text": "Eloquent JavaScript: A Modern Introduction to Programming.",
       "completed": true,
-      "id": 12
+      "id": 6
+    },
+    {
+      "listId": 2,
+      "text": "JavaScript & JQuery: Interactive Front-End Web Development.",
+      "completed": false,
+      "id": 7
     },
     {
       "listId": 3,
-      "text": "mnm",
+      "text": "JavaScript podcasts for web developers.",
       "completed": false,
-      "id": 13
+      "id": 8
     },
     {
       "listId": 3,
-      "text": "ppppp",
+      "text": "Full Stack Radio.",
       "completed": false,
-      "id": 14
+      "id": 9
+    },
+    {
+      "listId": 3,
+      "text": "Front End Happy Hour.",
+      "completed": true,
+      "id": 10
+    },
+    {
+      "listId": 3,
+      "text": "That's my JAMstac‪k.",
+      "completed": true,
+      "id": 11
     }
   ],
   "colors": [

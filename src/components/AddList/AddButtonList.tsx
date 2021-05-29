@@ -5,7 +5,7 @@ import s from './AddList.module.css'
 import { addNewListThunk, ColorsType } from '../../redux-store/listsRuducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { isFetchingSelector } from '../../redux-store/listsSelector';
-import { Button, Card, CardHeader, createStyles, IconButton, makeStyles, Paper } from '@material-ui/core';
+import { Button, createStyles, IconButton, makeStyles, Paper } from '@material-ui/core';
 import { Theme } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 import TextField from '@material-ui/core/TextField';
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
                 width: '95%'
             },
         },
-    }),
+    }), 
 );
 
 type PropsType = {
@@ -42,7 +42,6 @@ type PropsType = {
 const AddList: React.FC<PropsType> = ({ colors }) => {
 
     const classes = useStyles();
-
     const [isPopup, setPopup] = useState(false)
     const [activeColor, setActiveColor] = useState(3)
     const [inputValue, setInputValue] = useState('')
@@ -75,10 +74,9 @@ const AddList: React.FC<PropsType> = ({ colors }) => {
         dispatch(addNewListThunk(inputValue, activeColor, color))
     }
 
-
     return (
         <div className={s.add_list}>
-            <List onClickItem={visiblePopup} onClick={visiblePopup} items={[{ icon: <i className="fas fa-plus"></i>, name: 'Добавить список' }]} />
+            <List onClickItem={visiblePopup} onClick={visiblePopup} items={[{ icon: <i className="fas fa-plus"></i>, name: 'Add new List' }]} />
 
             {isPopup ?
                 <Paper className={classes.root}>
@@ -108,8 +106,6 @@ const AddList: React.FC<PropsType> = ({ colors }) => {
                     </Button>
                 </Paper> : null}
         </div>
-
-
     )
 }
 

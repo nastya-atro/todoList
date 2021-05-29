@@ -46,8 +46,6 @@ const List: React.FC<PropsType> = (props) => {
 
     return (
         <div>
-            
-
             <Card onClick={props.onClick} className='todo__list'>
                 {props.items.map((item: any, index: number) =>
 
@@ -67,10 +65,7 @@ const List: React.FC<PropsType> = (props) => {
                         }
                         title={item.name}
                         subheader={item.tasks && `${item.tasks.length} task`}
-
-                    >
-
-                        
+                    >      
                     </CardHeader>)}
             </Card>
         </div>
