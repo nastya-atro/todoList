@@ -11,7 +11,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import TextField from '@material-ui/core/TextField';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 
-
+ 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
@@ -80,6 +80,7 @@ const AddList: React.FC<PropsType> = ({ colors }) => {
 
             {isPopup ?
                 <Paper className={classes.root}>
+                    <span className='popup'>
                     <IconButton className={s.icon_close}>
                         <CloseIcon onClick={onClose} />
                     </IconButton>
@@ -104,6 +105,7 @@ const AddList: React.FC<PropsType> = ({ colors }) => {
                     <Button onClick={addNewList} variant="contained" color="default" className={classes.button} startIcon={<BookmarkBorderIcon />}>
                         {isFetching ? 'Loading...' : 'Save list'}
                     </Button>
+                    </span>
                 </Paper> : null}
         </div>
     )

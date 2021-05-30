@@ -54,7 +54,7 @@ const Tasks: React.FC<PropsType> = (props) => {
             <Link className={s.tasks_header_text} to={`/lists/${props.list.id}`}>
                 <Paper elevation={0} className={s.tasks_header_tpaper}>
                     <Typography variant='h6' onClick={changeTitleItem} className={s.todo_main_tasks_title} style={{ color: props.list.color.hex }}>
-                        {props.list.name} </Typography>
+                       <span className='name_list'>{props.list.name}</span>  </Typography>
                 </Paper>
             </Link>
             <div>

@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
     }),
 );
-
+ 
 
 const AddTasksForm: React.FC<PropsType> = ({ list }) => {
     const classes = useStyles();
@@ -60,13 +60,13 @@ const AddTasksForm: React.FC<PropsType> = ({ list }) => {
     return (
         <Paper elevation={0} className={s.tasks_form}>
             {visibleForm ?
-                <div onClick={toogleVisibleForm}>
+                <div className='button' onClick={toogleVisibleForm}>
                     <IconButton className={s.icon_close}>
                         <AddCircleIcon />
                     </IconButton>
                     <span>Add new task</span>
                 </div> :
-                <div>
+                <div className='form_new_task'>
                     <form className={classes.input} noValidate autoComplete="off">
                         <TextField
                             id="outlined-basic"

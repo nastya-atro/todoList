@@ -29,7 +29,7 @@ export type ColorsType = {
 }
 
 
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 
 const listsReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {

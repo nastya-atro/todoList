@@ -14,15 +14,49 @@
       "name": "Podcasts",
       "colorId": 6,
       "id": 3
+    },
+    {
+      "name": "ooo",
+      "colorId": 4,
+      "id": 4
+    },
+    {
+      "name": "ooo",
+      "colorId": 4,
+      "id": 5
+    },
+    {
+      "name": "hnhn",
+      "colorId": 5,
+      "id": 6
+    },
+    {
+      "name": "",
+      "colorId": 1,
+      "id": 7
+    },
+    {
+      "name": "",
+      "colorId": 1,
+      "id": 8
+    },
+    {
+      "name": "",
+      "colorId": 1,
+      "id": 9
+    },
+    {
+      "name": "",
+      "colorId": 1,
+      "id": 10
+    },
+    {
+      "name": "",
+      "colorId": 1,
+      "id": 11
     }
   ],
   "tasks": [
-    {
-      "listId": 1,
-      "text": "Ameli",
-      "completed": true,
-      "id": 1
-    },
     {
       "listId": 1,
       "text": "Titanic",
@@ -82,6 +116,12 @@
       "text": "That's my JAMstac‪k.",
       "completed": true,
       "id": 11
+    },
+    {
+      "id": 1,
+      "listId": 1,
+      "text": "",
+      "completed": true
     }
   ],
   "colors": [

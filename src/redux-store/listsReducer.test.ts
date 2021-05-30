@@ -1,32 +1,36 @@
-import listsReducer, { actions } from "./listsRuducer";
+import listsReducer, { actions, InitialStateType } from "./listsRuducer";
 
-let state = {
-    lists: [
-        {
-            name: "Films",
-            colorId: 4,
-            id: 1,
-            tasks: [
-                { listId: 1, text: "Ameli", completed: false, id: 1 },
-                { listId: 1, text: "Titanic", completed: true, id: 2 },
-                { listId: 1, text: "Adventure Time", completed: true, id: 3 },
-                { listId: 1, text: "Friends", completed: false, id: 4 }],
-            color: [
-                { id: 1, hex: "#C9D1D3", name: "grey" }]
-        },
-        {
-            name: "Books",
-            colorId: 5,
-            id: 2,
-            tasks: [{ listId: 2, text: "A Smarter Way to Learn JavaScript.", completed: false, id: 5 },
-            { listId: 2, text: "Eloquent JavaScript: A Modern Introduction to Programming.", completed: true, id: 6 }],
-            color: [{ id: 1, hex: "#C9D1D3", name: "grey" }]
-        }
-    ],
-    colors: null,
-    activeItem: null,
-    isFetching: false
-}
+let state: InitialStateType
+
+beforeEach(() => {
+    state = {
+        lists: [
+            {
+                name: "Films",
+                colorId: 4,
+                id: 1,
+                tasks: [
+                    { listId: 1, text: "Ameli", completed: false, id: 1 },
+                    { listId: 1, text: "Titanic", completed: true, id: 2 },
+                    { listId: 1, text: "Adventure Time", completed: true, id: 3 },
+                    { listId: 1, text: "Friends", completed: false, id: 4 }],
+                color: [
+                    { id: 1, hex: "#C9D1D3", name: "grey" }]
+            },
+            {
+                name: "Books",
+                colorId: 5,
+                id: 2,
+                tasks: [{ listId: 2, text: "A Smarter Way to Learn JavaScript.", completed: false, id: 5 },
+                { listId: 2, text: "Eloquent JavaScript: A Modern Introduction to Programming.", completed: true, id: 6 }],
+                color: [{ id: 1, hex: "#C9D1D3", name: "grey" }]
+            }
+        ],
+        colors: null,
+        activeItem: null,
+        isFetching: false
+    }
+})
 
 test('lists length should be increased', () => {
     //1. test data
@@ -45,6 +49,9 @@ test('lists length should be increased', () => {
     //3. expectation
     expect(newState.lists.length).toBe(3)
 });
+
+
+
 
 
 test('new lists name should be - Podcast', () => {
@@ -144,7 +151,7 @@ test('title of item should be changed', () => {
 
 test('title of tasks should be changed', () => {
     //1. test data
-    let action = actions.changeTaskTextAction(1, 2, 'Hisory about Alice')
+    let action = actions.changeTaskTextAction(1, 1, 'Hisory about Alice')
 
     //2. action 
     let newState = listsReducer(state, action)
@@ -153,14 +160,25 @@ test('title of tasks should be changed', () => {
     expect(newState.lists[0].tasks[0].text).toBe('Hisory about Alice')
 });
 
-test('seleted task should be changed', () => {
+test('seleted task should be changed in "false"', () => {
     //1. test data
-    let action = actions.changeSelectTaskAction(1, 2, false)
+    let action = actions.changeSelectTaskAction(1, 1, false)
 
     //2. action 
     let newState = listsReducer(state, action)
 
     //3. expectation
-    expect(newState.lists[0].tasks[0].completed).toBe(false)
+    expect(newState.lists[0].tasks[0].completed).toBeFalsy()
+});
+
+test('seleted task should be changed in "true"', () => {
+    //1. test data
+    let action = actions.changeSelectTaskAction(1, 1, true)
+
+    //2. action 
+    let newState = listsReducer(state, action)
+
+    //3. expectation
+    expect(newState.lists[0].tasks[0].completed).toBeTruthy()
 });
 

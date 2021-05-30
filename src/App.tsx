@@ -72,7 +72,7 @@ const App: React.FC = () => {
               <List onClickItem={(list) => history.push(`/lists/${list.id}`)}
                 activeItem={activeItem}
                 isRemovable
-                items={lists} /> : ('Loading...')}
+                items={lists} /> : ('Loading...')} 
             <AddList colors={colors} />
           </Grid>
 

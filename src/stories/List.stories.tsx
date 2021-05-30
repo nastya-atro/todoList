@@ -29,7 +29,7 @@ export const ListBaseExample = () => {
                 tasks: [{ id: 1, listId: 1, text: 'jj', completed: false }],
                 color: [{ id: 1, hex: '#0000', name: 'white' }]
             }]}
-        />
+        /> 
 
     
 }
