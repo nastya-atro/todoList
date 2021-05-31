@@ -192,15 +192,16 @@ export const actions = {
 
 export const setLists = (): ThunkType => {
     return async (dispatch) => {
-        let response = await todoListApi.getLists()
-        dispatch(actions.setListsAction(response.data))
+        let data = await todoListApi.getLists()
+        dispatch(actions.setListsAction(data))
     }
 }
 
 export const setColors = (): ThunkType => {
     return async (dispatch) => {
-        let response = await todoListApi.getColors()
-        dispatch(actions.setColorsAction(response.data))
+        let data = await todoListApi.getColors()
+        dispatch(actions.setColorsAction(data))
+        
     }
 }
 
@@ -208,8 +209,10 @@ export const addNewListThunk = (inputValue: string, activeColor: number, color: 
 
     return async (dispatch) => {
         dispatch(actions.toogleIsFetchingAction(true))
-        const response = await todoListApi.addNewList(inputValue, activeColor)
-        const newObj = { ...response.data, color, tasks: [] }
+        
+        const data = await todoListApi.addNewList(inputValue, activeColor)
+       
+        const newObj = { ...data, color, tasks: [] }
         dispatch(setLists())
         dispatch(actions.toogleIsFetchingAction(false))
         dispatch(actions.addNewListAction(newObj))
@@ -227,9 +230,9 @@ export const removeListThunk = (listId: number): ThunkType => {
 export const addNewTaskThunk = (newTask: TastsType, listId: number): ThunkType => {
     return async (dispatch) => {
         dispatch(actions.toogleIsFetchingAction(true))
-        const response = await todoListApi.addNewTask(newTask)
+        const data = await todoListApi.addNewTask(newTask)
         dispatch(setLists())
-        dispatch(actions.addNewTaskAction(listId, response.data))
+        dispatch(actions.addNewTaskAction(listId, data))
         dispatch(actions.toogleIsFetchingAction(false))
     }
 }

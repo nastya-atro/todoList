@@ -1,11 +1,6 @@
 {
   "lists": [
     {
-      "name": "Films",
-      "colorId": 4,
-      "id": 1
-    },
-    {
       "name": "Books",
       "colorId": 5,
       "id": 2
@@ -16,65 +11,17 @@
       "id": 3
     },
     {
-      "name": "ooo",
-      "colorId": 4,
+      "name": "sss",
+      "colorId": 1,
       "id": 4
     },
     {
-      "name": "ooo",
-      "colorId": 4,
+      "name": "yyy",
+      "colorId": 2,
       "id": 5
-    },
-    {
-      "name": "hnhn",
-      "colorId": 5,
-      "id": 6
-    },
-    {
-      "name": "",
-      "colorId": 1,
-      "id": 7
-    },
-    {
-      "name": "",
-      "colorId": 1,
-      "id": 8
-    },
-    {
-      "name": "",
-      "colorId": 1,
-      "id": 9
-    },
-    {
-      "name": "",
-      "colorId": 1,
-      "id": 10
-    },
-    {
-      "name": "",
-      "colorId": 1,
-      "id": 11
     }
   ],
   "tasks": [
-    {
-      "listId": 1,
-      "text": "Titanic",
-      "completed": true,
-      "id": 2
-    },
-    {
-      "listId": 1,
-      "text": "Adventure Time",
-      "completed": true,
-      "id": 3
-    },
-    {
-      "listId": 1,
-      "text": "Friends",
-      "completed": false,
-      "id": 4
-    },
     {
       "listId": 2,
       "text": "A Smarter Way to Learn JavaScript.",
@@ -116,12 +63,6 @@
       "text": "That's my JAMstac‪k.",
       "completed": true,
       "id": 11
-    },
-    {
-      "id": 1,
-      "listId": 1,
-      "text": "",
-      "completed": true
     }
   ],
   "colors": [
