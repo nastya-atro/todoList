@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/nastya-atro/todoList.git/static/css/main.1363db57.chunk.css",
-    "main.js": "/nastya-atro/todoList.git/static/js/main.afee723f.chunk.js",
-    "main.js.map": "/nastya-atro/todoList.git/static/js/main.afee723f.chunk.js.map",
-    "runtime-main.js": "/nastya-atro/todoList.git/static/js/runtime-main.bed99e0f.js",
-    "runtime-main.js.map": "/nastya-atro/todoList.git/static/js/runtime-main.bed99e0f.js.map",
-    "static/js/2.9a53f166.chunk.js": "/nastya-atro/todoList.git/static/js/2.9a53f166.chunk.js",
-    "static/js/2.9a53f166.chunk.js.map": "/nastya-atro/todoList.git/static/js/2.9a53f166.chunk.js.map",
-    "index.html": "/nastya-atro/todoList.git/index.html",
-    "static/css/main.1363db57.chunk.css.map": "/nastya-atro/todoList.git/static/css/main.1363db57.chunk.css.map",
-    "static/js/2.9a53f166.chunk.js.LICENSE.txt": "/nastya-atro/todoList.git/static/js/2.9a53f166.chunk.js.LICENSE.txt"
+    "main.css": "/todoList/static/css/main.1363db57.chunk.css",
+    "main.js": "/todoList/static/js/main.c3f83d36.chunk.js",
+    "main.js.map": "/todoList/static/js/main.c3f83d36.chunk.js.map",
+    "runtime-main.js": "/todoList/static/js/runtime-main.472339f6.js",
+    "runtime-main.js.map": "/todoList/static/js/runtime-main.472339f6.js.map",
+    "static/js/2.9a53f166.chunk.js": "/todoList/static/js/2.9a53f166.chunk.js",
+    "static/js/2.9a53f166.chunk.js.map": "/todoList/static/js/2.9a53f166.chunk.js.map",
+    "index.html": "/todoList/index.html",
+    "static/css/main.1363db57.chunk.css.map": "/todoList/static/css/main.1363db57.chunk.css.map",
+    "static/js/2.9a53f166.chunk.js.LICENSE.txt": "/todoList/static/js/2.9a53f166.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.bed99e0f.js",
+    "static/js/runtime-main.472339f6.js",
     "static/js/2.9a53f166.chunk.js",
     "static/css/main.1363db57.chunk.css",
-    "static/js/main.afee723f.chunk.js"
+    "static/js/main.c3f83d36.chunk.js"
   ]
 }
