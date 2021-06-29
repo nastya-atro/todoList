@@ -7,7 +7,8 @@ import { removeTaskThunk, changeTitleItemThunk, changeTaskTextThunk, changeSelec
 import { Typography, makeStyles, Paper, FormControlLabel, Checkbox, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import EditIcon from '@material-ui/icons/Edit';
-
+import { changeTaskTextToolkit, changeTitleItemToolkit, removeTaskToolkit, changeSelectTaskToolkit } from './../../redux-toolkit/reducerToolkit';
+ 
 type PropsType = {
     list: any
     withoutInput: boolean
@@ -31,21 +32,21 @@ const Tasks: React.FC<PropsType> = (props) => {
     const changeTitleItem = () => {
         const newTitle = window.prompt('Write new title', props.list.name)
         if (!newTitle) { return }
-        dispatch(changeTitleItemThunk(props.list.id, newTitle))
+        dispatch(changeTitleItemToolkit(props.list.id, newTitle))
     }
 
     const onRemoveTask = (listId: number, taskId: number) => {
-        dispatch(removeTaskThunk(listId, taskId))
+        dispatch(removeTaskToolkit(listId, taskId))
     }
 
     const changeTaskText = (listId: number, taskObj: { id: number, text: string }) => {
         const newTaskText = window.prompt('Rewrite your task', taskObj.text)
         if (!newTaskText) { return }
-        dispatch(changeTaskTextThunk(listId, taskObj.id, newTaskText))
+        dispatch(changeTaskTextToolkit(listId, taskObj.id, newTaskText))
     }
 
     const onCompleteTask = (listId: number, taskId: number, completed: boolean) => {
-        dispatch(changeSelectTaskThunk(listId, taskId, completed))
+        dispatch(changeSelectTaskToolkit(listId, taskId, completed))
     }
 
 

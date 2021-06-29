@@ -8,7 +8,9 @@ import { Provider, useDispatch, useSelector} from 'react-redux';
 import { setColors, setLists, actions} from './redux-store/listsRuducer';
 import { colorsSelector, listsSelector, activeItemSelector } from './redux-store/listsSelector';
 import { AppBar, Box, Container, Grid, makeStyles, Typography } from '@material-ui/core';
-import store from './redux-store/redux-store';
+import store from './redux-toolkit/reduxToolkit';
+//import store from './redux-store/redux-store';
+import { setActiveItemAction, setColorsToolkit, setListsToolkit } from './redux-toolkit/reducerToolkit';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,15 +44,15 @@ const App: React.FC = () => {
   const location = useLocation()
 
   useEffect(() => {
-    dispatch(setLists())
-    dispatch(setColors())
+    dispatch(setListsToolkit())
+    dispatch(setColorsToolkit())
   }, [])
 
   useEffect(() => {
     const listId = location.pathname.split('lists/')[1]
     if (lists) {
       const list = lists.find(list => list.id === Number(listId))
-      dispatch(actions.setActiveItemAction(list))
+      dispatch(setActiveItemAction(list))
     }
   }, [lists, location.pathname])
 
@@ -95,7 +97,7 @@ const AppContainer = () => {
 }
 
 let MainApp: React.FC = () => {
-  return <BrowserRouter>
+  return <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Provider store={store}>
       <AppContainer />
     </Provider>

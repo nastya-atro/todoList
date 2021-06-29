@@ -2,10 +2,11 @@
   "name": "todo-list",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/nastya-atro/todoList.git",
+  "homepage": "https://nastya-atro.github.io/todoList/",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
+    "@reduxjs/toolkit": "^1.6.0",
     "@storybook/addon-storysource": "^6.2.9",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

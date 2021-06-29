@@ -9,6 +9,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Theme } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
 import CloseIcon from '@material-ui/icons/Close';
+import { removeListToolkit } from '../../redux-toolkit/reducerToolkit';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -41,10 +42,10 @@ const List: React.FC<PropsType> = (props) => {
     const dispatch = useDispatch()
 
     const onRemove = (item: ListsType) => {
-        dispatch(removeListThunk(item.id))
+        dispatch(removeListToolkit(item.id))
     }
 
-    return (
+    return ( 
         <div>
             <Card onClick={props.onClick} className='todo__list'>
                 {props.items.map((item: any, index: number) =>

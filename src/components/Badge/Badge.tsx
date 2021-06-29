@@ -11,4 +11,4 @@ type PropsType={
 const Badge:React.FC<PropsType>=(props)=> <i onClick={props.onClick} style={{backgroundColor: props.colors}} 
 className={cn({[s.active]:props.className}, s.badge)}></i>
 
-export default Badge
+export default Badge 

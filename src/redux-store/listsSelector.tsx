@@ -1,4 +1,5 @@
-import { AppStateType } from "./redux-store"
+import { AppStateType } from "../redux-toolkit/reduxToolkit"
+
 
 
 export const listsSelector=(state: AppStateType)=>{

@@ -10,6 +10,7 @@ import { Theme } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 import TextField from '@material-ui/core/TextField';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import { addNewListToolkit } from './../../redux-toolkit/reducerToolkit';
 
  
 const useStyles = makeStyles((theme: Theme) =>
@@ -71,7 +72,7 @@ const AddList: React.FC<PropsType> = ({ colors }) => {
             return
         }
         const color = colors && colors.filter(color => color.id === activeColor)[0]
-        dispatch(addNewListThunk(inputValue, activeColor, color))
+        dispatch(addNewListToolkit(inputValue, activeColor, color))
     }
 
     return (
@@ -111,4 +112,4 @@ const AddList: React.FC<PropsType> = ({ colors }) => {
     )
 }
 
-export default AddList
+export default AddList 

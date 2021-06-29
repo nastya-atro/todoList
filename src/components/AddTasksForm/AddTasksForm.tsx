@@ -7,6 +7,7 @@ import { Paper, IconButton, makeStyles, createStyles, Button, Grid } from '@mate
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import TextField from '@material-ui/core/TextField';
 import { Theme } from '@material-ui/core/styles';
+import { addNewTaskToolkit } from './../../redux-toolkit/reducerToolkit';
 
 type PropsType = {
     list: ListsType
@@ -53,10 +54,10 @@ const AddTasksForm: React.FC<PropsType> = ({ list }) => {
             "text": inputValue,
             "completed": false
         }
-        dispatch(addNewTaskThunk(newTask, list.id))
+        dispatch(addNewTaskToolkit(newTask, list.id))
         toogleVisibleForm()
     }
-
+ 
     return (
         <Paper elevation={0} className={s.tasks_form}>
             {visibleForm ?
